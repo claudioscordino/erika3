@@ -62,6 +62,10 @@ ifndef OSEE_PLATFORM
 $(error "Not valid platform provided!")
 endif
 
+OS_EE_PULL_INC_FILES += $(ERIKA_FILES)/pkg/arch/aarch64/tracer/ee_arch_tracer.h
+OS_EE_PULL_SRC_FILES += $(ERIKA_FILES)/pkg/arch/aarch64/tracer/ee_aarch64_tracer.c
+OS_EE_PULL_SRC_FILES += $(ERIKA_FILES)/pkg/arch/aarch64/tracer/ee_aarch64_tracer_trampoline.S
+
 OS_EE_PULL_MK_FILES += $(ERIKA_FILES)/pkg/arch/aarch64/$(OSEE_PLATFORM)/ee_arch_cfg.mk
 OS_EE_PULL_MK_FILES += $(ERIKA_FILES)/pkg/arch/aarch64/$(OSEE_PLATFORM)/ee_arch_compiler_gcc.mk
 OS_EE_PULL_MK_FILES += $(ERIKA_FILES)/pkg/arch/aarch64/$(OSEE_PLATFORM)/ee_aarch64.lds

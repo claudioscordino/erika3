@@ -55,6 +55,8 @@ EE_SRCS += ee_aarch64_boot.c
 EE_SRCS += ee_aarch64_int.c
 EE_SRCS += ee_aarch64_ctx.S
 EE_SRCS += ee_aarch64_gtimer.c
+EE_SRCS += ee_aarch64_tracer.c
+EE_SRCS += ee_aarch64_tracer_trampoline.S
 
 ifeq ($(call iseeopt, OSEE_API_DYNAMIC), yes)
 EE_SRCS += ee_std_hal_init.c

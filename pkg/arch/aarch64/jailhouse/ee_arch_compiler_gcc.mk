@@ -115,7 +115,7 @@ EE_SIZE ?= $(BINDIR)$(JAILHOUSE_AARCH64_GCCPREFIX)size
 ## OPT_CC are the options for AARCH64 C compiler invocation
 OPT_CC += -c -nostdinc -mlittle-endian -fno-pie -Wall -Wstrict-prototypes      \
 -Wtype-limits -Wmissing-declarations -Wmissing-prototypes -fno-strict-aliasing \
--fomit-frame-pointer -fno-pic -fno-common -fno-stack-protector
+-fno-pic -fno-common -fno-stack-protector
 ifeq ($(or	\
     $(and $(call iseeopt, OS_EE_BUILD), $(call iseeopt, OS_EE_BUILD_DEBUG)),   \
     $(and $(call iseeopt, OS_EE_APP_BUILD), $(call iseeopt, OS_EE_APP_BUILD_DEBUG)) \
@@ -126,12 +126,12 @@ else
 OPT_CC += -g -Os -save-temps=obj
 endif
 # Specific option from the application makefile
-OPT_CC += $(CFLAGS)
+OPT_CC += $(CFLAGS) -pg
 
 ## OPT_CXX are the options for AARCH64 C++ compiler invocation
 OPT_CXX += -c -nostdinc -mlittle-endian -fno-pie -Wall -Wstrict-prototypes\
  -Wtype-limits -Wmissing-declarations -Wmissing-prototypes -fno-strict-aliasing\
- -fomit-frame-pointer -fno-pic -fno-common -fno-stack-protector
+ -fno-pic -fno-common -fno-stack-protector
 ifeq ($(or	\
     $(and $(call iseeopt, OS_EE_BUILD), $(call iseeopt, OS_EE_BUILD_DEBUG)),   \
     $(and $(call iseeopt, OS_EE_APP_BUILD), $(call iseeopt, OS_EE_APP_BUILD_DEBUG)) \
@@ -141,12 +141,12 @@ else
 OPT_CXX += -g -Os -save-temps=obj
 endif
 # Specific option from the application makefile
-OPT_CXX += $(CFLAGS) $(CXXFLAGS)
+OPT_CXX += $(CFLAGS) $(CXXFLAGS) -pg
 
 ## OS_EE_AS_OPT are the options for AARCH64 assembler invocation
 OS_EE_AS_OPT = -c -nostdinc -mlittle-endian -fno-pie -Wall -Wstrict-prototypes  \
 -Wtype-limits -Wmissing-declarations -Wmissing-prototypes -fno-strict-aliasing \
--fomit-frame-pointer -fno-pic -fno-common -fno-stack-protector
+-fno-pic -fno-common -fno-stack-protector
 ifeq ($(or	\
     $(and $(call iseeopt, OS_EE_BUILD), $(call iseeopt, OS_EE_BUILD_DEBUG)),   \
     $(and $(call iseeopt, OS_EE_APP_BUILD), $(call iseeopt, OS_EE_APP_BUILD_DEBUG)) \
@@ -155,7 +155,7 @@ OS_EE_AS_OPT += -g -Os -save-temps=obj
 else
 OS_EE_AS_OPT += -g -Os -save-temps=obj
 endif
-OS_EE_AS_OPT += $(ASFLAGS)
+OS_EE_AS_OPT += $(ASFLAGS) -pg
 
 # OS_EE_AR_OPT represents the options for avr linker invocation
 ifeq	($(call iseeopt, OS_EE_VERBOSE), yes)
